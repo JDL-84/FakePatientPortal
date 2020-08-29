@@ -1,9 +1,11 @@
 /**
- * Fake Patient Portal Holding Page.
- * Version 1. 
- * Description. (use period)
- * Jim Lynes
-**/
+ * Summary. Fake Patient Portal
+ *
+ * Description. Gimmick holding site. Prints generated patient data is teletype format with Hunt for Red October soundbyte. 
+ *
+ * @author JDL-84
+ * @linkhttps://jdl-84.github.io/FakePatientPortal/Data/FakePatientPortal.js
+ */
  
 /** TypeSpeed - How fast each CHAR is written **/
 var TypeSpeed = 26;
