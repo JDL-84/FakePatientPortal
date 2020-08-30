@@ -1,4 +1,4 @@
-<!-- PROJECT LOGO -->
+
 <br />
 <p align="center">
   <a href="https://jdl-84.github.io/FakePatientPortal/">
@@ -9,9 +9,6 @@
 
   <p align="center">
     Gimmick holding site. 
-
-    <br />
-    <a href="https://jdl-84.github.io/FakePatientPortal/">View Demo</a>
   </p>
 </p>
 
