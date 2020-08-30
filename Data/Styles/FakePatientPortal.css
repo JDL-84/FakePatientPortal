@@ -35,7 +35,7 @@ html {
 }
 .terminalTop {
 	height: 38px;
-	background-image: url("../Images/Terminal/TerminalLogo.png");
+	/* background-image: url("../Images/Terminal/TerminalLogo.png");*/
 	background-repeat: no-repeat;
 	background-position: right 5% top 5%;
 }
