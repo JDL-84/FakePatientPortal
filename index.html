@@ -2,26 +2,31 @@
 <html lang="en">
 <head>
 	<title>JDL-84 - Fake Patient Portal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=2">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script type="text/javascript" src="Data/FakePatientPortal.js"></script>
-	<link rel="stylesheet" type="text/css" href="Data/FakePatientPortal.css">
-	<link rel="icon" type="image/ico" href="Data/favicon.ico">
+	<script type="text/javascript" src="Data/Scripts/FakePatientPortal.js"></script>
+	<link rel="stylesheet" type="text/css" href="Data/Styles/FakePatientPortal.css">
 	
 	<audio id="TeleTypeNoise">
-		<source src="Data/FakePatientPorta.ogg" type="audio/ogg">
+		<source src="Data/Audio/FakePatientPortal.ogg" type="audio/ogg">
 	</audio>
 
 </head>
 <body onload="PrintTerminalData()">	
-<div class="limiter">
-		<div class="box">
-			<div class="terminal">			
+		  <section>
+				<div class="terminal">	
+				<div class="terminalTop"></div>
+
 					<div class="terminal-window">
-						<textarea id="terminal-output" readonly="true" maxlength="50"></textarea>					
+						<textarea id="terminal-output" class="noselect" readonly="true" maxlength="50"></textarea>					
 					</div>	
-			</div>
-		</div>
-	</div>
+				</div>
+				<div class="terminalbottom">
+					<div class="terminalPower"></div>
+					<div class="terminalTape"></div>
+					<div class="terminalSticker"></div>
+				</div>
+			 </section>  			 
 </body>
 </html>
