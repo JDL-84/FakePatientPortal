@@ -82,44 +82,53 @@ function TeleType(PII,i)
 {  
   //Clear last instance of block claret.   
   TidyClaret();
-  
-  var TextArea =  document.getElementById(TerminalInputName ); 	
-  if (i < PII.length) 
-  {	
-	//Demographics split with '|' relaced with tab
-	if(PII.charAt(i) == '|')
+  	if(Toggle==1)
 	{
-		 TextArea.innerHTML += '\t';
-	}
+			var TextArea =  document.getElementById(TerminalInputName ); 	
+			if (i < PII.length) 
+			{					
+				//Demographics split with '|' relaced with tab
+				if(PII.charAt(i) == '|')
+				{
+					TextArea.innerHTML += '\t';
+				}
+				else
+				{
+					//Print next char in demographic
+					TextArea.innerHTML += PII.charAt(i);	
+					//insert block as claret.
+					TextArea.innerHTML += "█";
+				}
+	
+				//Scroll to bottom
+				TextArea.scrollTop = TextArea.scrollHeight;
+				//increment the char count. 
+				i++;
+				//repeat (with wait) for next char. 
+
+				setTimeout(function() {TeleType(PII,i);}, TypeSpeed );
+
+	
+			}
+			else
+			{
+				//demographic line completed. 
+	
+				//stop the teletype noise 
+				StopAudio();
+	
+				//insert a new line. 
+				TextArea.innerHTML += '\n';
+	
+				//Repeat with new demographic data.
+				setTimeout(function (){ PrintTerminalData(); },1500);
+			}
+  	}
 	else
 	{
-		//Print next char in demographic
-		TextArea.innerHTML += PII.charAt(i);	
-		//insert block as claret.
-		TextArea.innerHTML += "█";
+		//Power is off
+		ClearTerminal();
 	}
-	
-	//Scroll to bottom
-	TextArea.scrollTop = TextArea.scrollHeight;
-	//increment the char count. 
-	i++;
-	//repeat (with wait) for next char. 
-	setTimeout(function() {TeleType(PII,i);}, TypeSpeed )
-	
-  }
-  else
-  {
-	//demographic line completed. 
-	
-	//stop the teletype noise 
-	StopAudio();
-	
-	//insert a new line. 
-    TextArea.innerHTML += '\n';
-	
-	//Repeat with new demographic data.
-	setTimeout(function (){ PrintTerminalData(); },1500);
-  }
 }
 
 function TidyClaret()
@@ -127,6 +136,16 @@ function TidyClaret()
 	//find the last instance of the block char and remove it. 
 	var TextArea =  document.getElementById(TerminalInputName); 
 	TextArea.innerHTML = TextArea.innerHTML.replace(/█$/, "") + "";
+}
+
+function ClearTerminal()
+{
+	//Power Is Off 
+	//Stop Audio
+	StopAudio();
+	//Remove Existing Data
+	var TextArea =  document.getElementById(TerminalInputName); 
+	TextArea.innerHTML = "";
 }
 
 /** End of Terminal **/
@@ -212,14 +231,52 @@ function FakePatientRecord()
 /** End of Patient Demographics**/
 
 /** MAIN **/
+
+//PowerState Variabe 
+var Toggle =1;
+
+function PowerSwitch(){
+	
+	if(Toggle ==1) 
+	{	
+		//Switch Power off
+		Toggle=0;
+		//Change the power icon
+		document.getElementById("PowerBTN").src = "Data/Images/Terminal/TerminalPowerOff.png"; 
+		//Remove Green Screen
+		document.getElementById("terminal-output").className = "noselect TerminalOff";
+		//Remove the text
+		ClearTerminal();
+	} 
+	else 
+	{
+		//Switch Power On
+		Toggle = 1;
+		//Change the power icon
+		var pwr = document.getElementById("PowerBTN").src = "Data/Images/Terminal/TerminalPower.png"; 
+		//Re-add Green Screen
+		document.getElementById("terminal-output").className = "noselect TerminalOn";
+		//Start Typing 
+		PrintTerminalData();
+	}
+
+}
+
 function PrintTerminalData()
 {
-	//irritating noise from Red October. 
-	playAudio();
-	//Generate new patient demographic and begin tele true
-	TeleType(FakePatientRecord(),0);  	
-	//Check textarea space. 
-	TextAreaTrim();
+	if(Toggle ==1)
+	{
+		//irritating noise from Red October. 
+		playAudio();
+		//Generate new patient demographic and begin tele true
+		TeleType(FakePatientRecord(),0);  	
+		//Check textarea space. 
+		TextAreaTrim();
+	}
+	else
+	{
+		
+	}
 }
 
 /** END **/

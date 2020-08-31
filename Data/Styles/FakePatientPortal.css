@@ -43,14 +43,13 @@ html {
 	height: 45px;
 }
 .terminalPower {
-	background-image: url("../Images/Terminal/TerminalPower.png");
-	background-repeat: no-repeat;
 	width: 15px;
 	height: 15px;
 	margin-top: 10px;
 	margin-left: 35px;
 	float: left;
 }
+
 .terminalSticker {
 	background-image: url("../Images/Terminal/TerminalSticker.png");
 	background-repeat: no-repeat;
@@ -90,6 +89,16 @@ section {
 	transform: translate(-50%, -50%);
 	min-width: 400px;
 }
+
+.TerminalOn
+{
+	background-image: radial-gradient(rgba(0, 140, 0, 0.95), black 135%);
+}
+
+.TerminalOff
+{
+	background-image: radial-gradient(rgba(0, 0, 0, 1), white 500%);
+}
 #terminal-output {
 	color: white;
 	font: 1.3rem FixedsysExcelsior301Regular;
@@ -102,6 +111,5 @@ section {
 	padding: 15px 35px 25px 65px;
 	overflow: hidden;
 	background-color: #000;
-	background-image: radial-gradient(rgba(0, 140, 0, 0.95), black 135%);
 	resize: none;
 }
