@@ -173,7 +173,7 @@ function GetPatientNHSNumber()
 {
 	/** Creates out NHS number in ### ### ### format **/
 	var NHSNumber = ""	
-	var NHSNumber = NHSNumber.concat(GetRandomNumber(0,999).toString().padStart(3, "0")," ", GetRandomNumber(0,999).toString().padStart(3, "0")," ",GetRandomNumber(0,999).toString().padStart(3, "0"));
+	var NHSNumber = NHSNumber.concat(GetRandomNumber(0,999).toString().padStart(3, "0")," ", GetRandomNumber(0,999).toString().padStart(3, "0")," ",GetRandomNumber(0,999).toString().padStart(4, "0"));
 	return NHSNumber;
 }
 
